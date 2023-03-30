@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Product from "../components/Product";
 
 const Category = () => {
   const { id } = useParams();
@@ -27,18 +28,7 @@ const Category = () => {
       <section className="container mx-auto ">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {category?.attributes.products.data.map((product) => (
-            <div
-              key={product.id}
-              className="border border-gray-100 p-5 rounded-md"
-            >
-              <img
-                src={product.attributes.images[0]}
-                className="w-full"
-                alt="product"
-              />
-              <p className="font-medium my-2">{product.attributes.name}</p>
-              <p>${product.attributes.price}</p>
-            </div>
+            <Product product={product} key={product.id} />
           ))}
         </div>
       </section>

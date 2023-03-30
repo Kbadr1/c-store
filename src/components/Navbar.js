@@ -21,7 +21,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="container mx-auto w-full flex flex-row items-center justify-between navbar py-6 px-3 md:px-0">
+    <nav className="container mx-auto w-full flex flex-row items-center justify-between navbar py-6 px-3 md:px-0 border-b border-gray-200">
       <div className="flex md:hidden">
         <img
           src={toggle ? closeIcon : menuIcon}
