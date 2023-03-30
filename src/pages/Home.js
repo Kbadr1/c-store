@@ -4,6 +4,7 @@ import Hero from "../assets/hero.jpg";
 import axios from "axios";
 import MiceImage from "../assets/home-mice.webp";
 import KeyboardImage from "../assets/home-keyboard.webp";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [categories, setCategories] = useState([]);
@@ -34,7 +35,10 @@ function Home() {
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {categories.map((category) => (
-            <div className="">
+            <Link
+              className="hover:text-[#E21836] transition-all duration-300"
+              to={`/category/${category.id}`}
+            >
               <img
                 src={category.attributes.image}
                 alt="category"
@@ -43,7 +47,7 @@ function Home() {
               <p className="text-center mt-3 font-orbitron tracking-widest font-medium">
                 {category.attributes.name}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

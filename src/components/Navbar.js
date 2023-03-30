@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import cartIcon from "../assets/cart.svg";
 import closeIcon from "../assets/close.svg";
 import menuIcon from "../assets/menu.svg";
@@ -31,22 +31,26 @@ const Navbar = () => {
         />
       </div>
       <div>
-        <span className="font-orbitron font-extrabold text-xl text-[#E21836]">
-          Compu Store
-        </span>
+        <Link to="/">
+          <span className="font-orbitron font-extrabold text-xl text-[#E21836]">
+            C-Store
+          </span>
+        </Link>
       </div>
       <ul className="list-none flex-row items-center hidden md:flex">
         {categories.map((category) => (
           <li
-            key={category.attributes.id}
+            key={category.id}
             className="mr-6 capitalize font-orbitron tracking-wide hover:text-[#E21836] transition-all duration-300"
           >
-            <a href="#">{category.attributes.name}</a>
+            <Link to={`/category/${category.id}`}>
+              {category.attributes.name}
+            </Link>
           </li>
         ))}
       </ul>
       <a className="hidden md:flex" href="#">
-        <img src={cartIcon} alt="cart" className="w-6" />
+        <img src={cartIcon} alt="cart" className="w-6 ml-12" />
       </a>
       <div className="flex md:hidden">
         <a href="#">
@@ -60,12 +64,14 @@ const Navbar = () => {
           <ul className="list-none">
             {categories.map((category, index) => (
               <li
-                key={category.attributes.id}
+                key={category.id}
                 className={`font-orbitron  capitalize ${
                   categories.length - 1 === index ? "mb-0" : "mb-3"
                 }`}
               >
-                <a href="#">{category.attributes.name}</a>
+                <Link to={`/category/${category.id}`}>
+                  {category.attributes.name}
+                </Link>
               </li>
             ))}
           </ul>
