@@ -28,7 +28,7 @@ const Category = () => {
       <h1 className="font-orbitron font-extrabold text-4xl text-center mb-10">
         Gaming {category?.attributes.name}
       </h1>
-      <section className="container mx-auto ">
+      <section className="container mx-auto px-3 xl:px-28 ">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {category?.attributes.products.data.map((product) => (
             <Product product={product} key={product.id} />

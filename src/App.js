@@ -1,19 +1,21 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Category from "./pages/Category";
-import Home from "./pages/Home";
-import Product from "./pages/Product";
+import StateContextProvider from "./context/StateContext";
+import { Cart, Home, Product, Category } from "./pages";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category/:id" element={<Category />} />
-        <Route path="/product/:id" element={<Product />} />
-      </Routes>
-    </div>
+    <StateContextProvider>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:id" element={<Category />} />
+          <Route path="/product/:id" element={<Product />} />
+          <Route path="cart" element={<Cart />} />
+        </Routes>
+      </div>
+    </StateContextProvider>
   );
 }
 

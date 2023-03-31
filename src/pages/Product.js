@@ -1,9 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { StateContext } from "../context/StateContext";
 
 const Product = () => {
   const { id } = useParams();
+  const { addToCart } = useContext(StateContext);
   const [product, setProduct] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
 
@@ -65,7 +67,10 @@ const Product = () => {
               <p className="font-extrabold text-[#E21836] text-lg mb-8">
                 ${product.attributes.price}
               </p>
-              <button className="text-white bg-[#E21836] px-8 py-3 uppercase">
+              <button
+                className="text-white bg-[#E21836] px-8 py-3 uppercase"
+                onClick={() => addToCart(product)}
+              >
                 Add to cart
               </button>
             </div>

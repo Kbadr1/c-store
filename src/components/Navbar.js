@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { NavLink, Link } from "react-router-dom";
 import cartIcon from "../assets/cart.svg";
 import closeIcon from "../assets/close.svg";
 import menuIcon from "../assets/menu.svg";
+import { StateContext } from "../context/StateContext";
 
 const Navbar = () => {
+  const { cart } = useContext(StateContext);
+  const cartTotal = cart.reduce((sum, { quantity }) => sum + quantity, 0);
   const [toggle, setToggle] = useState(false);
 
   const [categories, setCategories] = useState([]);
@@ -25,7 +28,7 @@ const Navbar = () => {
         <div className="flex md:hidden">
           <img
             src={toggle ? closeIcon : menuIcon}
-            alt="cart"
+            alt="menu"
             className="w-6"
             onClick={() => setToggle(!toggle)}
           />
@@ -55,13 +58,19 @@ const Navbar = () => {
               </li>
             ))}
         </ul>
-        <a className="hidden md:flex" href="#">
+        <Link to={`/cart`} className="hidden md:flex">
           <img src={cartIcon} alt="cart" className="w-6 ml-12" />
-        </a>
+          {cart.length ? (
+            <div className="bg-[#e21836] rounded-full w-3 h-3 ml-[-8px] border border-white"></div>
+          ) : null}
+        </Link>
         <div className="flex md:hidden">
-          <a href="#">
+          <Link to={`/cart`} className="flex">
             <img src={cartIcon} alt="cart" className="w-6" />
-          </a>
+            {cart.length ? (
+              <div className="bg-[#e21836] ml-[-10px] rounded-full w-3 h-3  border border-white"></div>
+            ) : null}
+          </Link>
           <div
             className={`${
               !toggle ? "hidden" : "flex"
