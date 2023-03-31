@@ -9,11 +9,14 @@ const Category = () => {
 
   const getCategoryById = () => {
     axios
-      .get(`http://localhost:1337/api/categories/${id}?populate=*`)
+      .get(
+        `http://localhost:1337/api/categories/${id}?populate[products][populate][0]=imgs`
+      )
       .then((res) => {
         setCategory(res.data.data);
-        console.log(res.data.data);
-      });
+        // console.log(res.data.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -21,8 +24,8 @@ const Category = () => {
   }, [id]);
 
   return (
-    <div>
-      <h1 className="font-orbitron font-extrabold text-4xl text-center my-10">
+    <div className="my-10">
+      <h1 className="font-orbitron font-extrabold text-4xl text-center mb-10">
         Gaming {category?.attributes.name}
       </h1>
       <section className="container mx-auto ">
