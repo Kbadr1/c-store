@@ -112,7 +112,7 @@ function Home() {
       </section>
       <section className="container  mx-auto px-3 xl:px-28 my-20">
         <h4 className="text-center font-bold mb-10 text-3xl font-orbitron">
-          Best Seller Products
+          Explore Products
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {products.length &&

@@ -14,7 +14,10 @@ const Cart = () => {
         <>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20">
             {cart.map((product) => (
-              <div key={product.id} className="grid grid-cols-3 gap-6">
+              <div
+                key={product.id}
+                className="grid grid-cols-3 gap-6 items-center"
+              >
                 <Link to={`/product/${product.id}`}>
                   <img
                     src={`http://localhost:1337${product.attributes.imgs.data[0].attributes.url}`}
@@ -77,20 +80,22 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <div className="flex flex-row items-center justify-end p-2 mt-20">
-            <p className="font-orbitron text-lg">
-              Total Sum:{" "}
-              <span className="font-bold ">
-                $
-                {cart
-                  .reduce(
-                    (total, item) =>
-                      total + item.attributes.price * item.quantity,
-                    0
-                  )
-                  .toFixed(2)}
-              </span>
-            </p>
+          <div className="flex flex-row items-center justify-center md:justify-end p-2 mt-20 ">
+            <div className="bg-[#F5F6F7] p-6 rounded-lg w-full md:w-auto text-center">
+              <p className="font-orbitron text-lg ">
+                Total Sum:{" "}
+                <span className="font-bold ">
+                  $
+                  {cart
+                    .reduce(
+                      (total, item) =>
+                        total + item.attributes.price * item.quantity,
+                      0
+                    )
+                    .toFixed(2)}
+                </span>
+              </p>
+            </div>
           </div>
         </>
       ) : (

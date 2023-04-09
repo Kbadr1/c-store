@@ -15,7 +15,7 @@ const Product = ({ product }) => {
   return (
     <Link
       to={`/product/${product.id}`}
-      className="border border-gray-200  rounded-md "
+      className="border border-gray-100  rounded-md "
       onMouseOver={() => onHover(product.id)}
       onMouseOut={onOut}
     >

@@ -13,7 +13,6 @@ const Product = () => {
     axios
       .get(`http://localhost:1337/api/products/${id}?populate=*`)
       .then((res) => {
-        console.log(res.data.data);
         setProduct(res.data.data);
       })
       .catch((err) => console.log(err));
@@ -42,8 +41,8 @@ const Product = () => {
                     key={img.id}
                     className={`cursor-pointer rounded-md border ${
                       index === activeImage
-                        ? "border-[#E21836]"
-                        : "border-gray-200"
+                        ? "border-[#e218364d]"
+                        : "border-gray-100"
                     } mr-2`}
                   >
                     <img
@@ -68,7 +67,7 @@ const Product = () => {
                 ${product.attributes.price}
               </p>
               <button
-                className="text-white bg-[#E21836] px-8 py-3 uppercase"
+                className="text-white bg-[#E21836] px-8 py-3 uppercase hover:bg-[#c41933] transition-all duration-300"
                 onClick={() => addToCart(product)}
               >
                 Add to cart

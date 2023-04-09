@@ -58,8 +58,8 @@ const Navbar = () => {
               </li>
             ))}
         </ul>
-        <Link to={`/cart`} className="hidden md:flex">
-          <img src={cartIcon} alt="cart" className="w-6 ml-12" />
+        <Link to={`/cart`} className="hidden md:flex ml-12">
+          <img src={cartIcon} alt="cart" className="w-6 " />
           {cart.length ? (
             <div className="bg-[#e21836] rounded-full w-3 h-3 ml-[-8px] border border-white"></div>
           ) : null}
@@ -74,9 +74,9 @@ const Navbar = () => {
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } absolute left-2 top-20 bg-white p-4 rounded-lg`}
+            } absolute left-2 top-20  p-4 rounded-lg z-50 bg-[#e21836] text-white`}
           >
-            <ul className="list-none ">
+            <ul className="list-none">
               {categories.length &&
                 categories.map((category, index) => (
                   <li
@@ -84,6 +84,7 @@ const Navbar = () => {
                     className={`font-orbitron  capitalize ${
                       categories.length - 1 === index ? "mb-0" : "mb-3"
                     }`}
+                    onClick={() => setToggle(false)}
                   >
                     <Link to={`/category/${category.id}`}>
                       {category.attributes.name}
